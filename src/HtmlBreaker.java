@@ -48,7 +48,7 @@ public class HtmlBreaker {
             String tag;
 
             for(String s : text){
-                Pattern p = Pattern.compile("\\<[^>]*>");
+                Pattern p = Pattern.compile("\\<[^>]*>");   // \\< - обозначение '<', [^>] всё, кроме знака '>', * - 0 и более повторов, > - конец поиска
                 Matcher m = p.matcher(s);
 
                 while (m.find() && !tags.contains(tag = m.group(0)) && !(tag.charAt(1) == '/')) {
@@ -76,7 +76,7 @@ public class HtmlBreaker {
             String row;
 
             for(int j = 0; j < text.size(); j++){
-                text.add(j, text.remove(j).replaceAll("\\<[^>]*>", ""));
+                text.add(j, text.remove(j).replaceAll("\\<[^>]*>", "")); // то же самое, что и сверху, только заменяем на пустую строку, а не просто находим
 
                 row = text.get(j);
 
